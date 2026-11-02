@@ -1,1 +1,301 @@
-# TeacherEN
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TeacherEN</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root{
+  --bg:var(--tg-theme-bg-color,#ffffff);
+  --tx:var(--tg-theme-text-color,#1b1b1f);
+  --hint:var(--tg-theme-hint-color,#7a7f87);
+  --acc:var(--tg-theme-button-color,#2f80ed);
+  --acc-tx:var(--tg-theme-button-text-color,#ffffff);
+  --sur:var(--tg-theme-secondary-bg-color,#f1f3f6);
+  --ok:#2e9e5b;
+  --bad:#d64545;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--tx);font:17px/1.45 -apple-system,"Segoe UI",Roboto,sans-serif}
+#app{max-width:560px;margin:0 auto;padding:16px 16px calc(32px + env(safe-area-inset-bottom,0px))}
+h1{font-size:30px;margin:8px 0 2px}
+h2{font-size:24px;line-height:1.25;margin:12px 0}
+p{margin:8px 0}
+button{font:inherit;color:inherit;border:0;cursor:pointer}
+.hint{color:var(--hint);font-size:15px}
+.top{display:flex;gap:8px;justify-content:flex-end}
+.pill{background:var(--sur);border-radius:999px;padding:4px 12px;font-size:15px}
+.card{display:block;width:100%;text-align:left;background:var(--sur);border-radius:14px;padding:14px 16px;margin:10px 0}
+.ct{font-weight:600;margin-bottom:4px}
+.ex{margin:6px 0}
+.ex b{cursor:pointer}
+.main{display:block;width:100%;background:var(--acc);color:var(--acc-tx);border-radius:14px;padding:14px;margin-top:16px;font-weight:600}
+.main:disabled{opacity:.45}
+.back{background:none;color:var(--acc);padding:6px 0}
+.bar{height:8px;background:var(--sur);border-radius:4px;overflow:hidden;margin:6px 0 16px}
+.fill{height:100%;background:var(--acc);transition:width .3s}
+.opts{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+.opt{background:var(--sur);border-radius:14px;padding:14px;text-align:left}
+.locked{pointer-events:none;opacity:.8}
+input.txt{width:100%;font:inherit;color:var(--tx);background:var(--sur);border:2px solid transparent;border-radius:14px;padding:12px 14px;outline:none}
+input.txt:focus{border-color:var(--acc)}
+.line{min-height:56px;border-bottom:2px solid var(--sur);display:flex;flex-wrap:wrap;gap:8px;padding:8px 0;margin:8px 0 16px}
+.bank{display:flex;flex-wrap:wrap;gap:8px}
+.tile{background:var(--sur);border-radius:10px;padding:8px 14px}
+.tile.used{opacity:.25;pointer-events:none}
+.fb{border-radius:14px;padding:12px 14px;margin-top:16px}
+.fb.ok{background:rgba(46,158,91,.15)}
+.fb.bad{background:rgba(214,69,69,.15)}
+.big{font-size:56px;text-align:center;margin:24px 0 0}
+.center{text-align:center}
+</style>
+</head>
+<body>
+<div id="app">Загрузка…</div>
+<script>
+var tg = window.Telegram && window.Telegram.WebApp;
+if (tg) { tg.ready(); tg.expand(); }
+
+var app = document.getElementById('app');
+var state = { course: null, progress: loadProgress() };
+var run = null;
+
+function loadProgress() {
+  try {
+    var s = localStorage.getItem('teacheren');
+    if (s) { return JSON.parse(s); }
+  } catch (e) {}
+  return { xp: 0, streak: 0, last: '', done: {} };
+}
+function saveProgress() {
+  try { localStorage.setItem('teacheren', JSON.stringify(state.progress)); } catch (e) {}
+}
+function day(offset) {
+  return new Date(Date.now() + offset * 86400000).toISOString().slice(0, 10);
+}
+function h(tag, cls, text) {
+  var e = document.createElement(tag);
+  if (cls) { e.className = cls; }
+  if (text !== undefined) { e.textContent = text; }
+  return e;
+}
+function clear() { app.innerHTML = ''; window.scrollTo(0, 0); }
+function norm(s) {
+  return String(s).toLowerCase().replace(/[\u2019\u0060]/g, "'").replace(/[.!?,]/g, '').replace(/\s+/g, ' ').trim();
+}
+function shuffle(arr) {
+  var a = arr.slice();
+  for (var i = a.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var t = a[i]; a[i] = a[j]; a[j] = t;
+  }
+  return a;
+}
+function buzz(ok) {
+  try { tg.HapticFeedback.notificationOccurred(ok ? 'success' : 'error'); } catch (e) {}
+}
+function speak(text) {
+  try {
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-US';
+    u.rate = 0.9;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(u);
+  } catch (e) {}
+}
+function backBtn(fn) {
+  var b = h('button', 'back', '← Назад');
+  b.onclick = fn;
+  return b;
+}
+
+/* ---------- Экраны ---------- */
+
+function home() {
+  clear();
+  var p = state.progress;
+  var top = h('div', 'top');
+  top.appendChild(h('div', 'pill', '🔥 ' + p.streak));
+  top.appendChild(h('div', 'pill', '⭐ ' + p.xp + ' XP'));
+  app.appendChild(top);
+  app.appendChild(h('h1', '', 'TeacherEN'));
+  app.appendChild(h('p', 'hint', 'Уровень ' + state.course.level + '. Выбери тему.'));
+  state.course.units.forEach(function (u, i) {
+    var c = h('button', 'card');
+    c.appendChild(h('div', 'ct', (i + 1) + '. ' + u.title));
+    var d = p.done[u.id];
+    c.appendChild(h('div', 'hint', d !== undefined ? 'Лучший результат: ' + d + '%' : 'Новая тема'));
+    c.onclick = function () { lesson(u); };
+    app.appendChild(c);
+  });
+}
+
+function lesson(u) {
+  clear();
+  app.appendChild(backBtn(home));
+  app.appendChild(h('h2', '', u.title));
+  app.appendChild(h('p', '', u.lesson.intro));
+  app.appendChild(h('p', 'hint', 'Нажми на английское предложение, чтобы услышать его.'));
+  u.lesson.rules.forEach(function (r) {
+    var c = h('div', 'card');
+    c.appendChild(h('div', 'ct', r.rule));
+    r.examples.forEach(function (e) {
+      var line = h('div', 'ex');
+      var en = h('b', '', e[0]);
+      en.onclick = function () { speak(e[0]); };
+      line.appendChild(en);
+      line.appendChild(h('span', 'hint', '  ' + e[1]));
+      c.appendChild(line);
+    });
+    app.appendChild(c);
+  });
+  var b = h('button', 'main', 'Начать упражнения');
+  b.onclick = function () { startUnit(u); };
+  app.appendChild(b);
+}
+
+function startUnit(u) {
+  run = { unit: u, list: u.exercises.slice(), i: 0, first: 0, total: u.exercises.length };
+  showEx();
+}
+
+function showEx() {
+  if (run.i >= run.list.length) { finish(); return; }
+  clear();
+  var ex = run.list[run.i];
+  var bar = h('div', 'bar');
+  var fill = h('div', 'fill');
+  fill.style.width = Math.round(run.i / run.list.length * 100) + '%';
+  bar.appendChild(fill);
+  app.appendChild(bar);
+
+  var labels = { choice: 'Выбери правильный вариант', fill: 'Впиши пропущенное слово', build: 'Составь предложение на английском' };
+  app.appendChild(h('div', 'hint', labels[ex.type] + (ex._r ? ' (работа над ошибкой)' : '')));
+  app.appendChild(h('h2', '', ex.q));
+
+  var area = h('div');
+  if (ex.type === 'choice') { drawChoice(ex, area); }
+  else if (ex.type === 'fill') { drawFill(ex, area); }
+  else { drawBuild(ex, area); }
+  app.appendChild(area);
+}
+
+function drawChoice(ex, area) {
+  area.className = 'opts';
+  ex.options.forEach(function (o) {
+    var b = h('button', 'opt', o);
+    b.onclick = function () { answer(ex, o, area); };
+    area.appendChild(b);
+  });
+}
+
+function drawFill(ex, area) {
+  var inp = h('input', 'txt');
+  inp.type = 'text';
+  inp.setAttribute('autocomplete', 'off');
+  inp.setAttribute('autocapitalize', 'off');
+  inp.setAttribute('autocorrect', 'off');
+  inp.spellcheck = false;
+  inp.placeholder = 'Твой ответ';
+  var btn = h('button', 'main', 'Проверить');
+  function go() {
+    if (inp.value.trim() === '') { return; }
+    answer(ex, inp.value, area);
+    btn.style.display = 'none';
+  }
+  btn.onclick = go;
+  inp.onkeydown = function (e) { if (e.key === 'Enter') { go(); } };
+  area.appendChild(inp);
+  area.appendChild(btn);
+}
+
+function drawBuild(ex, area) {
+  var pool = shuffle(ex.words);
+  var picked = [];
+  var line = h('div', 'line');
+  var bank = h('div', 'bank');
+  var btn = h('button', 'main', 'Проверить');
+  btn.disabled = true;
+  function redraw() {
+    line.innerHTML = '';
+    bank.innerHTML = '';
+    picked.forEach(function (pi, k) {
+      var t = h('button', 'tile', pool[pi]);
+      t.onclick = function () { picked.splice(k, 1); redraw(); };
+      line.appendChild(t);
+    });
+    pool.forEach(function (w, pi) {
+      var used = picked.indexOf(pi) > -1;
+      var t = h('button', 'tile' + (used ? ' used' : ''), w);
+      t.onclick = function () { picked.push(pi); redraw(); };
+      bank.appendChild(t);
+    });
+    btn.disabled = picked.length === 0;
+  }
+  btn.onclick = function () {
+    var given = picked.map(function (pi) { return pool[pi]; }).join(' ');
+    answer(ex, given, area);
+    btn.style.display = 'none';
+  };
+  area.appendChild(line);
+  area.appendChild(bank);
+  area.appendChild(btn);
+  redraw();
+}
+
+function answer(ex, given, area) {
+  var accepted = [].concat(ex.answer);
+  var ok = accepted.some(function (a) { return norm(a) === norm(given); });
+  area.classList.add('locked');
+  if (ok && !ex._r) { run.first++; }
+  if (!ok && !ex._r) {
+    run.list.push({ type: ex.type, q: ex.q, options: ex.options, answer: ex.answer, words: ex.words, why: ex.why, _r: true });
+  }
+  buzz(ok);
+  var fb = h('div', 'fb ' + (ok ? 'ok' : 'bad'));
+  fb.appendChild(h('b', '', ok ? 'Верно!' : 'Не совсем'));
+  if (!ok) { fb.appendChild(h('div', '', 'Правильно: ' + accepted[0])); }
+  if (ex.why) { fb.appendChild(h('div', 'hint', ex.why)); }
+  app.appendChild(fb);
+  var nx = h('button', 'main', 'Дальше');
+  nx.onclick = function () { run.i++; showEx(); };
+  app.appendChild(nx);
+}
+
+function finish() {
+  var p = state.progress;
+  var pct = Math.round(run.first / run.total * 100);
+  var gain = run.first * 10;
+  p.xp += gain;
+  var today = day(0);
+  if (p.last !== today) {
+    p.streak = (p.last === day(-1)) ? p.streak + 1 : 1;
+    p.last = today;
+  }
+  var id = run.unit.id;
+  if (p.done[id] === undefined || pct > p.done[id]) { p.done[id] = pct; }
+  saveProgress();
+
+  clear();
+  app.appendChild(h('div', 'big', pct >= 80 ? '🎉' : '💪'));
+  app.appendChild(h('h2', 'center', 'Тема пройдена'));
+  app.appendChild(h('p', 'center', 'С первой попытки: ' + run.first + ' из ' + run.total + ' (' + pct + '%)'));
+  app.appendChild(h('p', 'center hint', '+' + gain + ' XP · серия: ' + p.streak + ' дн.'));
+  var again = h('button', 'main', 'Пройти ещё раз');
+  again.onclick = function () { startUnit(run.unit); };
+  var menu = h('button', 'card center', 'К списку тем');
+  menu.onclick = home;
+  app.appendChild(again);
+  app.appendChild(menu);
+}
+
+/* ---------- Запуск ---------- */
+
+fetch('data/a1.json')
+  .then(function (r) { return r.json(); })
+  .then(function (c) { state.course = c; home(); })
+  .catch(function () { app.textContent = 'Не удалось загрузить курс. Проверь, что файл data/a1.json лежит в репозитории.'; });
+</script>
+</body>
+</html>
