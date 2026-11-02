@@ -1,100 +1,650 @@
 {
-  "level": "A1",
-  "units": [
-    {
-      "id": "be",
-      "title": "Глагол to be: я есть, ты есть",
-      "lesson": {
-        "intro": "В английском в каждом предложении должен быть глагол. Даже там, где по-русски его нет: «Я студент» = I am a student. Этот глагол — to be («быть»), и он меняется в зависимости от того, кто делает действие.",
-        "rules": [
-          {
-            "rule": "I am — «я ...»",
-            "examples": [
-              ["I am Ivan.", "Я Иван."],
-              ["I am at home.", "Я дома."]
-            ]
-          },
-          {
-            "rule": "he / she / it is — «он / она / оно ...»",
-            "examples": [
-              ["She is happy.", "Она счастлива."],
-              ["It is cold.", "Холодно."],
-              ["My phone is on the table.", "Мой телефон на столе."]
-            ]
-          },
-          {
-            "rule": "you / we / they are — «ты (вы) / мы / они ...»",
-            "examples": [
-              ["You are late.", "Ты опоздал."],
-              ["We are friends.", "Мы друзья."],
-              ["They are at work.", "Они на работе."]
-            ]
-          },
-          {
-            "rule": "Сокращения в живой речи: I'm, he's, they're",
-            "examples": [
-              ["I'm tired.", "Я устал."],
-              ["They're here.", "Они здесь."]
-            ]
-          },
-          {
-            "rule": "Отрицание: добавляем not (is not = isn't, are not = aren't)",
-            "examples": [
-              ["He is not at work.", "Его нет на работе."],
-              ["We aren't hungry.", "Мы не голодны."]
-            ]
-          }
-        ]
-      },
-      "exercises": [
-        { "type": "choice", "q": "I ___ a student.", "options": ["am", "is", "are"], "answer": "am", "why": "С I всегда используется am." },
-        { "type": "choice", "q": "She ___ happy.", "options": ["am", "is", "are"], "answer": "is", "why": "she → is." },
-        { "type": "choice", "q": "They ___ at home.", "options": ["am", "is", "are"], "answer": "are", "why": "they → are." },
-        { "type": "fill", "q": "My phone ___ on the table.", "answer": "is", "why": "Телефон — это it (одна вещь), значит is." },
-        { "type": "fill", "q": "We ___ friends.", "answer": "are", "why": "we → are." },
-        { "type": "fill", "q": "He ___ not hungry.", "answer": "is", "why": "he → is, затем not." },
-        { "type": "build", "q": "Я дома.", "answer": "I am at home.", "words": ["I", "am", "at", "home", "is", "are"], "why": "I am + место." },
-        { "type": "build", "q": "Она не голодна.", "answer": "She is not hungry.", "words": ["She", "is", "not", "hungry", "am", "are"], "why": "Порядок: кто + is + not + какая." }
+ "level": "A1",
+ "units": [
+  {
+   "id": "be",
+   "title": "Глагол to be: я есть, ты есть",
+   "lesson": {
+    "intro": "В английском в каждом предложении должен быть глагол. Даже там, где по-русски его нет: «Я студент» = I am a student. Этот глагол — to be («быть»), и он меняется в зависимости от того, кто делает действие.",
+    "rules": [
+     {
+      "rule": "I am — «я ...»",
+      "examples": [
+       [
+        "I am Ivan.",
+        "Я Иван."
+       ],
+       [
+        "I am at home.",
+        "Я дома."
+       ]
       ]
+     },
+     {
+      "rule": "he / she / it is — «он / она / оно ...»",
+      "examples": [
+       [
+        "She is happy.",
+        "Она счастлива."
+       ],
+       [
+        "It is cold.",
+        "Холодно."
+       ],
+       [
+        "My phone is on the table.",
+        "Мой телефон на столе."
+       ]
+      ]
+     },
+     {
+      "rule": "you / we / they are — «ты (вы) / мы / они ...»",
+      "examples": [
+       [
+        "You are late.",
+        "Ты опоздал."
+       ],
+       [
+        "We are friends.",
+        "Мы друзья."
+       ],
+       [
+        "They are at work.",
+        "Они на работе."
+       ]
+      ]
+     },
+     {
+      "rule": "Сокращения в живой речи: I'm, he's, they're",
+      "examples": [
+       [
+        "I'm tired.",
+        "Я устал."
+       ],
+       [
+        "They're here.",
+        "Они здесь."
+       ]
+      ]
+     },
+     {
+      "rule": "Отрицание: добавляем not (is not = isn't, are not = aren't)",
+      "examples": [
+       [
+        "He is not at work.",
+        "Его нет на работе."
+       ],
+       [
+        "We aren't hungry.",
+        "Мы не голодны."
+       ]
+      ]
+     }
+    ]
+   },
+   "exercises": [
+    {
+     "type": "choice",
+     "q": "I ___ a student.",
+     "options": [
+      "am",
+      "is",
+      "are"
+     ],
+     "answer": "am",
+     "why": "С I всегда используется am."
     },
     {
-      "id": "a-an",
-      "title": "Артикли a и an",
-      "lesson": {
-        "intro": "Перед исчисляемым существительным в единственном числе ставят a или an. Это значит «один какой-то». Выбор зависит от звука в начале слова, а не от буквы.",
-        "rules": [
-          {
-            "rule": "a — перед согласным звуком",
-            "examples": [
-              ["I have a phone.", "У меня есть телефон."],
-              ["She has a car.", "У неё есть машина."]
-            ]
-          },
-          {
-            "rule": "an — перед гласным звуком (a, e, i, o, u)",
-            "examples": [
-              ["I eat an apple.", "Я ем яблоко."],
-              ["He has an idea.", "У него есть идея."]
-            ]
-          },
-          {
-            "rule": "Подвох: смотри на звук. В слове hour буква h не читается, а university начинается со звука «ю»",
-            "examples": [
-              ["I wait an hour.", "Я жду час."],
-              ["She is a university student.", "Она студентка университета."]
-            ]
-          }
-        ]
-      },
-      "exercises": [
-        { "type": "choice", "q": "___ apple", "options": ["a", "an"], "answer": "an", "why": "apple начинается с гласного звука." },
-        { "type": "choice", "q": "___ book", "options": ["a", "an"], "answer": "a", "why": "book начинается с согласного звука." },
-        { "type": "choice", "q": "___ egg", "options": ["a", "an"], "answer": "an", "why": "egg начинается с гласного звука." },
-        { "type": "choice", "q": "___ hour", "options": ["a", "an"], "answer": "an", "why": "h в hour не читается, слово начинается со звука гласной." },
-        { "type": "choice", "q": "___ university", "options": ["a", "an"], "answer": "a", "why": "university начинается со звука «ю», это согласный звук." },
-        { "type": "fill", "q": "I have ___ orange.", "answer": "an", "why": "orange начинается с гласного звука." },
-        { "type": "build", "q": "У меня есть яблоко.", "answer": "I have an apple.", "words": ["I", "have", "an", "apple", "a", "am"], "why": "apple → an." }
-      ]
+     "type": "choice",
+     "q": "She ___ happy.",
+     "options": [
+      "am",
+      "is",
+      "are"
+     ],
+     "answer": "is",
+     "why": "she → is."
+    },
+    {
+     "type": "choice",
+     "q": "They ___ at home.",
+     "options": [
+      "am",
+      "is",
+      "are"
+     ],
+     "answer": "are",
+     "why": "they → are."
+    },
+    {
+     "type": "fill",
+     "q": "My phone ___ on the table.",
+     "answer": "is",
+     "why": "Телефон — это it (одна вещь), значит is."
+    },
+    {
+     "type": "fill",
+     "q": "We ___ friends.",
+     "answer": "are",
+     "why": "we → are."
+    },
+    {
+     "type": "fill",
+     "q": "He ___ not hungry.",
+     "answer": "is",
+     "why": "he → is, затем not."
+    },
+    {
+     "type": "build",
+     "q": "Я дома.",
+     "answer": "I am at home.",
+     "words": [
+      "I",
+      "am",
+      "at",
+      "home",
+      "is",
+      "are"
+     ],
+     "why": "I am + место."
+    },
+    {
+     "type": "build",
+     "q": "Она не голодна.",
+     "answer": "She is not hungry.",
+     "words": [
+      "She",
+      "is",
+      "not",
+      "hungry",
+      "am",
+      "are"
+     ],
+     "why": "Порядок: кто + is + not + какая."
     }
-  ]
+   ]
+  },
+  {
+   "id": "a-an",
+   "title": "Артикли a и an",
+   "lesson": {
+    "intro": "Перед исчисляемым существительным в единственном числе ставят a или an. Это значит «один какой-то». Выбор зависит от звука в начале слова, а не от буквы.",
+    "rules": [
+     {
+      "rule": "a — перед согласным звуком",
+      "examples": [
+       [
+        "I have a phone.",
+        "У меня есть телефон."
+       ],
+       [
+        "She has a car.",
+        "У неё есть машина."
+       ]
+      ]
+     },
+     {
+      "rule": "an — перед гласным звуком (a, e, i, o, u)",
+      "examples": [
+       [
+        "I eat an apple.",
+        "Я ем яблоко."
+       ],
+       [
+        "He has an idea.",
+        "У него есть идея."
+       ]
+      ]
+     },
+     {
+      "rule": "Подвох: смотри на звук. В слове hour буква h не читается, а university начинается со звука «ю»",
+      "examples": [
+       [
+        "I wait an hour.",
+        "Я жду час."
+       ],
+       [
+        "She is a university student.",
+        "Она студентка университета."
+       ]
+      ]
+     }
+    ]
+   },
+   "exercises": [
+    {
+     "type": "choice",
+     "q": "___ apple",
+     "options": [
+      "a",
+      "an"
+     ],
+     "answer": "an",
+     "why": "apple начинается с гласного звука."
+    },
+    {
+     "type": "choice",
+     "q": "___ book",
+     "options": [
+      "a",
+      "an"
+     ],
+     "answer": "a",
+     "why": "book начинается с согласного звука."
+    },
+    {
+     "type": "choice",
+     "q": "___ egg",
+     "options": [
+      "a",
+      "an"
+     ],
+     "answer": "an",
+     "why": "egg начинается с гласного звука."
+    },
+    {
+     "type": "choice",
+     "q": "___ hour",
+     "options": [
+      "a",
+      "an"
+     ],
+     "answer": "an",
+     "why": "h в hour не читается, слово начинается со звука гласной."
+    },
+    {
+     "type": "choice",
+     "q": "___ university",
+     "options": [
+      "a",
+      "an"
+     ],
+     "answer": "a",
+     "why": "university начинается со звука «ю», это согласный звук."
+    },
+    {
+     "type": "fill",
+     "q": "I have ___ orange.",
+     "answer": "an",
+     "why": "orange начинается с гласного звука."
+    },
+    {
+     "type": "build",
+     "q": "У меня есть яблоко.",
+     "answer": "I have an apple.",
+     "words": [
+      "I",
+      "have",
+      "an",
+      "apple",
+      "a",
+      "am"
+     ],
+     "why": "apple → an."
+    }
+   ]
+  },
+  {
+   "id": "hello",
+   "title": "Приветствия и знакомство",
+   "lesson": {
+    "intro": "Эти фразы ты услышишь в первый же день. Их учат целиком, как готовые «кирпичики».",
+    "rules": [
+     {
+      "rule": "Hello / Hi — поздороваться",
+      "examples": [
+       [
+        "Hello!",
+        "Здравствуйте!",
+        "👋"
+       ],
+       [
+        "Hi, Anna!",
+        "Привет, Анна!",
+        "👋"
+       ]
+      ]
+     },
+     {
+      "rule": "Good morning / afternoon / evening — приветствие по времени суток",
+      "examples": [
+       [
+        "Good morning!",
+        "Доброе утро!",
+        "🌅"
+       ],
+       [
+        "Good evening!",
+        "Добрый вечер!",
+        "🌇"
+       ]
+      ]
+     },
+     {
+      "rule": "My name is ... — представиться. Nice to meet you — приятно познакомиться",
+      "examples": [
+       [
+        "My name is Ivan.",
+        "Меня зовут Иван.",
+        "🙋"
+       ],
+       [
+        "Nice to meet you.",
+        "Приятно познакомиться.",
+        "🤝"
+       ]
+      ]
+     },
+     {
+      "rule": "How are you? — Как дела? Ответ: I'm fine, thanks.",
+      "examples": [
+       [
+        "How are you?",
+        "Как дела?",
+        "💬"
+       ],
+       [
+        "I'm fine, thanks.",
+        "Хорошо, спасибо.",
+        "🙂"
+       ]
+      ]
+     }
+    ]
+   },
+   "exercises": [
+    {
+     "type": "choice",
+     "q": "Сейчас утро. Что сказать при встрече?",
+     "options": [
+      "Good morning",
+      "Good evening",
+      "Good night"
+     ],
+     "answer": "Good morning",
+     "why": "morning — утро. Good night говорят перед сном."
+    },
+    {
+     "type": "choice",
+     "q": "Тебя спросили: How are you?",
+     "options": [
+      "I'm fine, thanks.",
+      "My name is Ivan.",
+      "Nice to meet you."
+     ],
+     "answer": "I'm fine, thanks.",
+     "why": "How are you? — «Как дела?», отвечаем про своё состояние."
+    },
+    {
+     "type": "fill",
+     "q": "My ___ is Ivan.",
+     "answer": "name",
+     "why": "My name is ... — «Меня зовут ...»."
+    },
+    {
+     "type": "fill",
+     "q": "Nice to ___ you.",
+     "answer": "meet",
+     "why": "Nice to meet you — устойчивая фраза."
+    },
+    {
+     "type": "build",
+     "q": "Меня зовут Иван.",
+     "answer": "My name is Ivan.",
+     "words": [
+      "My",
+      "name",
+      "is",
+      "Ivan",
+      "am",
+      "are"
+     ],
+     "why": "Порядок: My name is + имя."
+    },
+    {
+     "type": "build",
+     "q": "Как дела?",
+     "answer": "How are you?",
+     "words": [
+      "How",
+      "are",
+      "you",
+      "is",
+      "am"
+     ],
+     "why": "How are you? — устойчивый вопрос."
+    }
+   ]
+  },
+  {
+   "id": "my-your",
+   "title": "Мой, твой, его, её: my, your, his, her",
+   "lesson": {
+    "intro": "Эти слова отвечают на вопрос «чей?». Они всегда стоят перед существительным: my phone, her bag.",
+    "rules": [
+     {
+      "rule": "my / your — «мой / твой (ваш)»",
+      "examples": [
+       [
+        "This is my phone.",
+        "Это мой телефон.",
+        "📱"
+       ],
+       [
+        "Your coffee is hot.",
+        "Твой кофе горячий.",
+        "☕"
+       ]
+      ]
+     },
+     {
+      "rule": "his / her — «его / её». His — про мужчину, her — про женщину",
+      "examples": [
+       [
+        "This is his car.",
+        "Это его машина.",
+        "🚗"
+       ],
+       [
+        "Anna loves her cat.",
+        "Анна любит свою кошку.",
+        "🐱"
+       ]
+      ]
+     },
+     {
+      "rule": "our / their — «наш / их»",
+      "examples": [
+       [
+        "Our flat is small.",
+        "Наша квартира маленькая.",
+        "🏠"
+       ],
+       [
+        "Their dog is big.",
+        "Их собака большая.",
+        "🐕"
+       ]
+      ]
+     }
+    ]
+   },
+   "exercises": [
+    {
+     "type": "choice",
+     "q": "I love ___ job.",
+     "options": [
+      "my",
+      "your",
+      "his"
+     ],
+     "answer": "my",
+     "why": "Я → my."
+    },
+    {
+     "type": "choice",
+     "q": "Anna has a cat. ___ cat is white.",
+     "options": [
+      "His",
+      "Her",
+      "My"
+     ],
+     "answer": "Her",
+     "why": "Anna — женщина, значит her."
+    },
+    {
+     "type": "choice",
+     "q": "Tom has a bike. ___ bike is red.",
+     "options": [
+      "His",
+      "Her",
+      "Our"
+     ],
+     "answer": "His",
+     "why": "Tom — мужчина, значит his."
+    },
+    {
+     "type": "fill",
+     "q": "We love ___ home.",
+     "answer": "our",
+     "why": "Мы → our."
+    },
+    {
+     "type": "fill",
+     "q": "They have a dog. ___ dog is nice.",
+     "answer": "their",
+     "why": "Они → their."
+    },
+    {
+     "type": "build",
+     "q": "Это моя сумка.",
+     "answer": "This is my bag.",
+     "words": [
+      "This",
+      "is",
+      "my",
+      "bag",
+      "your",
+      "her"
+     ],
+     "why": "This is + my + предмет."
+    }
+   ]
+  },
+  {
+   "id": "plural",
+   "title": "Множественное число: cat → cats",
+   "lesson": {
+    "intro": "Один предмет — a cat. Несколько — cats. Обычно просто добавляем -s, но есть исключения.",
+    "rules": [
+     {
+      "rule": "Обычно добавляем -s: book → books, phone → phones",
+      "examples": [
+       [
+        "I have two phones.",
+        "У меня два телефона.",
+        "📱📱"
+       ],
+       [
+        "They are my friends.",
+        "Это мои друзья.",
+        "👫"
+       ]
+      ]
+     },
+     {
+      "rule": "После s, x, ch, sh добавляем -es: bus → buses, box → boxes",
+      "examples": [
+       [
+        "Two buses are late.",
+        "Два автобуса опаздывают.",
+        "🚌"
+       ],
+       [
+        "I have three boxes.",
+        "У меня три коробки.",
+        "📦"
+       ]
+      ]
+     },
+     {
+      "rule": "Особые слова нужно запомнить: man → men, woman → women, child → children",
+      "examples": [
+       [
+        "Two children play.",
+        "Двое детей играют.",
+        "🧒"
+       ],
+       [
+        "Women and men work here.",
+        "Здесь работают женщины и мужчины.",
+        "👩👨"
+       ]
+      ]
+     }
+    ]
+   },
+   "exercises": [
+    {
+     "type": "choice",
+     "q": "one book, two ___",
+     "options": [
+      "books",
+      "bookes",
+      "book"
+     ],
+     "answer": "books",
+     "why": "Обычное слово: просто -s."
+    },
+    {
+     "type": "choice",
+     "q": "one box, three ___",
+     "options": [
+      "boxs",
+      "boxes",
+      "boxies"
+     ],
+     "answer": "boxes",
+     "why": "После x добавляем -es."
+    },
+    {
+     "type": "choice",
+     "q": "one child, two ___",
+     "options": [
+      "childs",
+      "childrens",
+      "children"
+     ],
+     "answer": "children",
+     "why": "Особая форма, её просто запоминают."
+    },
+    {
+     "type": "fill",
+     "q": "one apple, five ___",
+     "answer": "apples",
+     "why": "Обычное слово: -s."
+    },
+    {
+     "type": "fill",
+     "q": "one bus, two ___",
+     "answer": "buses",
+     "why": "После s добавляем -es."
+    },
+    {
+     "type": "build",
+     "q": "У меня два брата.",
+     "answer": "I have two brothers.",
+     "words": [
+      "I",
+      "have",
+      "two",
+      "brothers",
+      "brother",
+      "am"
+     ],
+     "why": "После two слово во множественном числе."
+    }
+   ]
+  }
+ ]
 }
