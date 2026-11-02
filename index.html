@@ -47,6 +47,7 @@ input.txt:focus{border-color:var(--acc)}
 .fb{border-radius:14px;padding:12px 14px;margin-top:16px}
 .fb.ok{background:rgba(46,158,91,.15)}
 .fb.bad{background:rgba(214,69,69,.15)}
+.pic{display:block;max-width:100%;border-radius:10px;margin:8px 0}
 .big{font-size:56px;text-align:center;margin:24px 0 0}
 .center{text-align:center}
 </style>
@@ -140,9 +141,10 @@ function lesson(u) {
   u.lesson.rules.forEach(function (r) {
     var c = h('div', 'card');
     c.appendChild(h('div', 'ct', r.rule));
+    if (r.img) { var im = h('img', 'pic'); im.src = r.img; im.alt = ''; c.appendChild(im); }
     r.examples.forEach(function (e) {
       var line = h('div', 'ex');
-      var en = h('b', '', e[0]);
+      var en = h('b', '', (e[2] ? e[2] + ' ' : '') + e[0]);
       en.onclick = function () { speak(e[0]); };
       line.appendChild(en);
       line.appendChild(h('span', 'hint', '  ' + e[1]));
