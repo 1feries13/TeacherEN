@@ -1,0 +1,100 @@
+{
+  "level": "A1",
+  "units": [
+    {
+      "id": "be",
+      "title": "Глагол to be: я есть, ты есть",
+      "lesson": {
+        "intro": "В английском в каждом предложении должен быть глагол. Даже там, где по-русски его нет: «Я студент» = I am a student. Этот глагол — to be («быть»), и он меняется в зависимости от того, кто делает действие.",
+        "rules": [
+          {
+            "rule": "I am — «я ...»",
+            "examples": [
+              ["I am Ivan.", "Я Иван."],
+              ["I am at home.", "Я дома."]
+            ]
+          },
+          {
+            "rule": "he / she / it is — «он / она / оно ...»",
+            "examples": [
+              ["She is happy.", "Она счастлива."],
+              ["It is cold.", "Холодно."],
+              ["My phone is on the table.", "Мой телефон на столе."]
+            ]
+          },
+          {
+            "rule": "you / we / they are — «ты (вы) / мы / они ...»",
+            "examples": [
+              ["You are late.", "Ты опоздал."],
+              ["We are friends.", "Мы друзья."],
+              ["They are at work.", "Они на работе."]
+            ]
+          },
+          {
+            "rule": "Сокращения в живой речи: I'm, he's, they're",
+            "examples": [
+              ["I'm tired.", "Я устал."],
+              ["They're here.", "Они здесь."]
+            ]
+          },
+          {
+            "rule": "Отрицание: добавляем not (is not = isn't, are not = aren't)",
+            "examples": [
+              ["He is not at work.", "Его нет на работе."],
+              ["We aren't hungry.", "Мы не голодны."]
+            ]
+          }
+        ]
+      },
+      "exercises": [
+        { "type": "choice", "q": "I ___ a student.", "options": ["am", "is", "are"], "answer": "am", "why": "С I всегда используется am." },
+        { "type": "choice", "q": "She ___ happy.", "options": ["am", "is", "are"], "answer": "is", "why": "she → is." },
+        { "type": "choice", "q": "They ___ at home.", "options": ["am", "is", "are"], "answer": "are", "why": "they → are." },
+        { "type": "fill", "q": "My phone ___ on the table.", "answer": "is", "why": "Телефон — это it (одна вещь), значит is." },
+        { "type": "fill", "q": "We ___ friends.", "answer": "are", "why": "we → are." },
+        { "type": "fill", "q": "He ___ not hungry.", "answer": "is", "why": "he → is, затем not." },
+        { "type": "build", "q": "Я дома.", "answer": "I am at home.", "words": ["I", "am", "at", "home", "is", "are"], "why": "I am + место." },
+        { "type": "build", "q": "Она не голодна.", "answer": "She is not hungry.", "words": ["She", "is", "not", "hungry", "am", "are"], "why": "Порядок: кто + is + not + какая." }
+      ]
+    },
+    {
+      "id": "a-an",
+      "title": "Артикли a и an",
+      "lesson": {
+        "intro": "Перед исчисляемым существительным в единственном числе ставят a или an. Это значит «один какой-то». Выбор зависит от звука в начале слова, а не от буквы.",
+        "rules": [
+          {
+            "rule": "a — перед согласным звуком",
+            "examples": [
+              ["I have a phone.", "У меня есть телефон."],
+              ["She has a car.", "У неё есть машина."]
+            ]
+          },
+          {
+            "rule": "an — перед гласным звуком (a, e, i, o, u)",
+            "examples": [
+              ["I eat an apple.", "Я ем яблоко."],
+              ["He has an idea.", "У него есть идея."]
+            ]
+          },
+          {
+            "rule": "Подвох: смотри на звук. В слове hour буква h не читается, а university начинается со звука «ю»",
+            "examples": [
+              ["I wait an hour.", "Я жду час."],
+              ["She is a university student.", "Она студентка университета."]
+            ]
+          }
+        ]
+      },
+      "exercises": [
+        { "type": "choice", "q": "___ apple", "options": ["a", "an"], "answer": "an", "why": "apple начинается с гласного звука." },
+        { "type": "choice", "q": "___ book", "options": ["a", "an"], "answer": "a", "why": "book начинается с согласного звука." },
+        { "type": "choice", "q": "___ egg", "options": ["a", "an"], "answer": "an", "why": "egg начинается с гласного звука." },
+        { "type": "choice", "q": "___ hour", "options": ["a", "an"], "answer": "an", "why": "h в hour не читается, слово начинается со звука гласной." },
+        { "type": "choice", "q": "___ university", "options": ["a", "an"], "answer": "a", "why": "university начинается со звука «ю», это согласный звук." },
+        { "type": "fill", "q": "I have ___ orange.", "answer": "an", "why": "orange начинается с гласного звука." },
+        { "type": "build", "q": "У меня есть яблоко.", "answer": "I have an apple.", "words": ["I", "have", "an", "apple", "a", "am"], "why": "apple → an." }
+      ]
+    }
+  ]
+}
